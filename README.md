@@ -1,4 +1,4 @@
-# Terraform Module: Naming Conventions
+# Naming Standards Terraform Module
 
 ## Overview
 
