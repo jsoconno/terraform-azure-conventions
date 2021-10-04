@@ -1,4 +1,4 @@
-# Terraform Module: Naming Standards
+# Terraform Module: Naming Conventions
 
 ## Overview
 
@@ -11,7 +11,7 @@ The configuration takes in a small number of values and uses that to construct a
 The best way to take advantage of this module is to reference it in its own file called naming-standards.tf with the following code...
 
 ```terraform
-module "naming_standards" {
+module "conventions" {
   source = "github.com/jsoconno/terraform-module-naming-standards"
 
   location_acronym = "use"
@@ -24,7 +24,7 @@ module "naming_standards" {
 
 ```terraform
 resource "azurerm_app_service_plan" "core" {
-  name                = module.naming_standards.azurerm_app_service_plan
+  name                = module.conventions.azurerm_app_service_plan
   location            = azurerm_resource_group.core.location
   resource_group_name = azurerm_resource_group.core.name
 
