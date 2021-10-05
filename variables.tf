@@ -1,4 +1,4 @@
-variables "lowercase" {
+variable "lowercase" {
   default     = true
   type        = bool
   description = "Allows users to set if they want to force lower case or allow mixed case.  Defaults to true."
