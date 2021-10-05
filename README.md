@@ -15,7 +15,7 @@ The configuration takes in the following arguments:
 
 Casing options were added to allow some flexibility over naming, but the default `kabab` case is recommended for its broad support across services and readability.  Case options for `upper`, `snake` and `title` were considered, but there are many resources that don't allow resources to start with an upper case letter or use the `_` character.  For these reasons, all casing supported are those that only use dashes or no spaces with the first letter always being lower case.
 
-Over time, this module will be improved to remove items that do not accept a name attribute and add support for additional providers.
+Over time, this module will be improved to remove items that do not accept a name attribute.  Any bugs addressed based on Azure's [naming conventions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules) will be addressed as they are identified.
 
 ## Example
 
