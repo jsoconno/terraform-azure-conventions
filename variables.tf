@@ -4,7 +4,7 @@ variable "case" {
   description = "Allows users to specify the desired case."
   validation {
     condition = (
-      contains(["kabab", "snake", "camel", "lower"], var.case)
+      contains(["kabab", "camel", "lower"], var.case)
     )
     error_message = "Valid values for var: case are kabab (this-resource), snake (this_resource), camel (thisResource), lower (thisresource)."
   }

@@ -11,10 +11,7 @@ The configuration takes in the following arguments:
 * `var: location_acronym [string - optional validated - defaults to "use"]` - The acronym for the deployment location.
 * `var: workload_acronym [string - required restricted - 8 chararcter limit]` - The acronym for the workload.  This might be an application, project, focus area, or other dimension.  For example, `core`, `app`, or some acronym for an app like `fb` might be common.
 * `environment_acronym [string - optional validated - defaults to "d"]` - The acronym for the deployment environment.  For example, `d` for development.
-
-There are also some attribute(s) that allow you to control formatting.  Supported argruments include:
-
-* `var: lowercase [bool]` - Determines whether or not lowercase is required as part of the convention.  Defaults to true.
+* `var: case [bool - optional validated - defaults to "kabab"]` - Allows the user to set some casing parameters.  Case options include `kabab`, `camel`, and `lower`.
 
 Over time, this module will be improved to remove items that do not accept a name attribute and add support for additional providers.
 
@@ -24,7 +21,9 @@ The best way to take advantage of this module is to create a file with the name 
 
 ```terraform
 module "conventions" {
-  source = "github.com/jsoconno/terraform-module-naming-standards?ref=v0.1.1"
+  source = "github.com/jsoconno/terraform-module-naming-standards?ref=v0.3.0"
+
+  case = "kabab" # this is optional and set to kabab by default.  shown here for demonstration only.
 
   location_acronym = "use"
   workload_acronym = "core"
