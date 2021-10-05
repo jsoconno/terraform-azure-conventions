@@ -76,11 +76,3 @@ To keep the naming as simple to understand as possible, the following logic was 
 5. If multiple resources have the same acronym then the first resource alphabetically retains the baseline acronym and the subsequent resources alphabetically adds additional letters from the last name of ther service.
 
 `api management` conflicts with `automation module` for the acronym `am` so `api management` gets `am` and `automation module` gets `amo`.
-
-## Change Log
-
-`v0.1.0` - The initial version of the standards was implemented for all avalable resources in the azurerm provider.  This includes resources that don't have a name attribute for simplicity to start.  This version was broken due to some malformatted `replace()` functions.
-
-`v0.1.1` - This version fixes the previously mentioned bug by updating the resources whos naming convention relied on the `replace()` function.
-
-`v0.2.0` - This version adds in functionality that allows users to specify if they want to enforce lowercase letters only or not.  It also enhances the README file to clarify some things.
