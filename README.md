@@ -13,7 +13,7 @@ The configuration takes in the following arguments:
 * `environment_acronym [string - optional validated - defaults to "d"]` - The acronym for the deployment environment.  For example, `d` for development.
 * `var: case [bool - optional validated - defaults to "kabab"]` - Allows the user to set some casing parameters.  Case options include `kabab`, `camel`, and `lower`.
 
-Casing options were provided to allow some flexibility, but it is recommended that teams stick to the default `kabab` case for the best results with both compatability with Azure and readability.
+Casing options were added to allow some flexibility over naming, but the default `kabab` case is recommended for its broad support across services and readability.  Case options for `upper`, `snake` and `title` were considered, but there are many resources that don't allow resources to start with an upper case letter or use the `_` character.  For these reasons, all casing supported are those that only use dashes or no spaces with the first letter always being lower case.
 
 Over time, this module will be improved to remove items that do not accept a name attribute and add support for additional providers.
 
