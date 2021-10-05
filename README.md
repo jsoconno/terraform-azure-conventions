@@ -1,24 +1,26 @@
-# Naming Standards Terraform Module
+# Azurerm Provider Resource Naming Conventions Module
 
 ## Overview
 
-The purpose of this module is to help standardize naming conventions for resources when using cloud providers.  See the list of supported providers below:
+The purpose of this module is to help standardize naming conventions for resources created in Azure using Terraform and the azurerm module.
 
-* `azurerm`
+The basic convention followed is `<unique resource identifier>-<location acronym>-<workload acronym>-<environment acronym>`.  Resources that have constraints on special characters utilize the `replace()` function to remove the `-` from the convention.
 
-The configuration takes in the following values:
+The configuration takes in the following arguments:
 
-* `location_acronym` - The acronym for the deployment location.  This is a validated field.
-* `workload_acronym` - The acronym for the workload.  This might be an application, project, focus area, or other item.  This is a freeform field with a limited length.
-* `environment_acronym` - The acronym for the deployment environment.  For example, `d` for development.  This is a validated field.
+* `var: location_acronym [string - optional validated - defaults to "use"]` - The acronym for the deployment location.
+* `var: workload_acronym [string - required restricted - 8 chararcter limit]` - The acronym for the workload.  This might be an application, project, focus area, or other dimension.  For example, `core`, `app`, or some acronym for an app like `fb` might be common.
+* `environment_acronym [string - optional validated - defaults to "d"]` - The acronym for the deployment environment.  For example, `d` for development.
 
-These values are used to construct a standard naming convention that can be referenced for any resource that is available.
+There are also some attribute(s) that allow you to control formatting.  Supported argruments include:
+
+* `var: lowercase [bool]` - Determines whether or not lowercase is required as part of the convention.  Defaults to true.
 
 Over time, this module will be improved to remove items that do not accept a name attribute and add support for additional providers.
 
 ## Example
 
-The best way to take advantage of this module is to create a file with the name conventions.tf to hold the naming standards module.  The following code should be added with your specific values.
+The best way to take advantage of this module is to create a file with the name `conventions.tf` to hold the naming standards module.  The following code should be added with your specific values.
 
 ```terraform
 module "conventions" {
@@ -29,7 +31,9 @@ module "conventions" {
   environment_acronym = "d"
 }
 ```
-You can also pass variables to the module from a variables file so that you can make the values different based on your environment.  For example, you might want to parameterize the `environment_acronym` variable so that you can deploy to development with the value `d`, but production with the value `p`.
+You can also pass variables to the module from a variables file so that you can make the values different based on your environment.  For example, you might want to parameterize the `environment_acronym` argument so that you can deploy to development with the value `d`, but production with the value `p`.
+
+Another common case might be to have multiple conventions if you need to specific a different workload.  To do this, it is recommended to call the module twice and give it a name that specifies the workload.  For example, you might have `module.conventions_core.azurerm...` and `module.conventions_app.azurerm...`.
 
 Once the module is declared you can use it with any supported resource by calling the module and referencing the provider resource type.
 
@@ -52,13 +56,31 @@ The module is written so that the name of the provider resource will always matc
 
 To keep the naming as simple to understand as possible, the following logic was implemented:
 
-* Naming uses the provider name as a baseline (e.g. `azurerm_api_management`).
-* The provider (e.g. `azurerm`) is dropped from the name and underscores replaces with spaces.
-* If the name of the service is a single word (e.g. `attestation`) then the first three letters of the service are used (e.g. `att`).
-* If the name of the service has multible words (e.g. `api management`) the first letters of each word are used (e.g. `am`).
-* If multiple resources have the same acronym (e.g. `automation module` conflicts with `api management` for the acronym `am`) then the first resource alphabetically retains the acronym (e.g. `api management` is `am`) and the subsequent resources alphabetically adds additional letters from the last name of ther service (e.g. `automation module` would become `amo`).
+1. Naming uses the provider name as a baseline
+
+`azurerm_api_management`
+
+2. The provider (e.g. `azurerm`) is dropped from the name and underscores replaces with spaces.
+
+`azurerm api management`
+
+3. If the name of the service is a single word then the first three letters of the service are used.
+
+`attestation` = `att`
+
+
+4. If the name of the service has multiple words the first letters of each word are used.
+
+`api management` = `am`
+
+5. If multiple resources have the same acronym then the first resource alphabetically retains the baseline acronym and the subsequent resources alphabetically adds additional letters from the last name of ther service.
+
+`api management` conflicts with `automation module` for the acronym `am` so `api management` gets `am` and `automation module` gets `amo`.
 
 ## Change Log
 
 `v0.1.0` - The initial version of the standards was implemented for all avalable resources in the azurerm provider.  This includes resources that don't have a name attribute for simplicity to start.  This version was broken due to some malformatted `replace()` functions.
+
 `v0.1.1` - This version fixes the previously mentioned bug by updating the resources whos naming convention relied on the `replace()` function.
+
+`v0.2.0` - This version adds in functionality that allows users to specify if they want to enforce lowercase letters only or not.  It also enhances the README file to clarify some things.

@@ -1,3 +1,9 @@
+variables "lowercase" {
+  default     = true
+  type        = bool
+  description = "Allows users to set if they want to force lower case or allow mixed case.  Defaults to true."
+}
+
 variable "location_acronym" {
   default     = "use"
   type        = string
@@ -12,7 +18,7 @@ variable "location_acronym" {
 
 variable "workload_acronym" {
   type        = string
-  description = "The acronym for the workload."
+  description = "The acronym for the workload.  This might be an application, project, focus area, or other item."
   validation {
     condition = (
       length(var.workload_acronym) <= 8
@@ -24,7 +30,7 @@ variable "workload_acronym" {
 variable "environment_acronym" {
   default     = "d"
   type        = string
-  description = "The acronym for the deployment environment."
+  description = "The acronym for the deployment environment.  For example, 'd' for 'development'."
   validation {
     condition = (
       contains(["d", "q", "u", "s", "p"], var.environment_acronym)
