@@ -13,6 +13,8 @@ The configuration takes in the following arguments:
 * `environment_acronym [string - optional validated - defaults to "d"]` - The acronym for the deployment environment.  For example, `d` for development.
 * `var: case [bool - optional validated - defaults to "kabab"]` - Allows the user to set some casing parameters.  Case options include `kabab`, `camel`, and `lower`.
 
+Casing options were provided to allow some flexibility, but it is recommended that teams stick to the default `kabab` case for the best results with both compatability with Azure and readability.
+
 Over time, this module will be improved to remove items that do not accept a name attribute and add support for additional providers.
 
 ## Example
