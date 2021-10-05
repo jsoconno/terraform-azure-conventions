@@ -1,7 +1,13 @@
-variable "lowercase" {
-  default     = true
-  type        = bool
-  description = "Allows users to set if they want to force lower case or allow mixed case.  Defaults to true."
+variable "case" {
+  default     = "kabab"
+  type        = string
+  description = "Allows users to specify the desired case."
+  validation {
+    condition = (
+      contains(["kabab", "snake", "camel", "lower"], var.case)
+    )
+    error_message = "Valid values for var: case are kabab (this-resource), snake (this_resource), camel (thisResource), lower (thisresource)."
+  }
 }
 
 variable "location_acronym" {
@@ -33,8 +39,8 @@ variable "environment_acronym" {
   description = "The acronym for the deployment environment.  For example, 'd' for 'development'."
   validation {
     condition = (
-      contains(["d", "q", "u", "s", "p"], var.environment_acronym)
+      contains(["x", "d", "t", "q", "u", "s", "p"], var.environment_acronym)
     )
-    error_message = "Valid values for var: environment_acronym are s (Sandbox), d (Development), t (Test), q (QA), u (UAT), s (Staging), p (Production)."
+    error_message = "Valid values for var: environment_acronym are x (Sandbox), d (Development), t (Test), q (QA), u (UAT), s (Staging), p (Production)."
   }
 }
