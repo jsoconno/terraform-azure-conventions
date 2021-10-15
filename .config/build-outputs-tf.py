@@ -691,6 +691,61 @@ resource_list = [
     "azurerm_video_analyzer_edge_module",
 ]
 
+alphanumeric_lowercase_only = [
+    "azurerm_analysis_services_server",
+    "azurerm_batch_account",
+    "azurerm_data_factory_linked_service_data_lake_storage_gen2",
+    "azurerm_data_lake_analytics_account",
+    "azurerm_data_lake_store",
+    "azurerm_data_share_dataset_kusto_cluster",
+    "azurerm_media_services_account",
+    "azurerm_storage_account",
+]
+
+alphanumeric_only = [
+    "azurerm_app_service_certificate_order",
+    "azurerm_container_registry",
+    "azurerm_container_registry_webhook",
+    "azurerm_logic_app_integration_account",
+    "azurerm_frontdoor_firewall_policy",
+    "azurerm_storage_table",
+]
+
+lowercase_only = [
+    "azurerm_container_group",
+    "azurerm_sql_failover_group",
+    "azurerm_sql_managed_instance",
+    "azurerm_sql_server",
+    "azurerm_service_fabric_cluster",
+    "azurerm_storage_container",
+    "azurerm_storage_queue",
+    "azurerm_storage_share",
+]
+
+alphanumeric_underscore_only = [
+    "azurerm_disk_encryption_set",
+]
+
+length_restricted = [
+    "azurerm_windows_virtual_machine",
+    "azurerm_windows_virtual_machine_scale_set",
+]
+
+def format_standard(resource, acronym):
+    return f'output "{resource}" {{\n  value = "{acronym}${{local.convention}}"\n  description = "Naming convention for the resource {resource}."\n}}\n\n'
+
+def format_alphanumeric_lowercase_only(resource, acronym):
+    return f'output "{resource}" {{\n  value = "{acronym}${{lower(replace(local.convention, "-", ""))}}"\n  description = "Naming convention for the resource {resource}.  This resource requires alphanumeric and lowercase values only."\n}}\n\n'
+
+def format_alphanumeric_only(resource, acronym):
+    return f'output "{resource}" {{\n  value = "{acronym}${{replace(local.convention, "-", "")}}"\n  description = "Naming convention for the resource {resource}.  This resource requires alphanumeric values only."\n}}\n\n'
+
+def format_lowercase_only(resource, acronym):
+    return f'output "{resource}" {{\n  value = "{acronym}${{lower(local.convention, "-", "")}}"\n  description = "Naming convention for the resource {resource}.  This resource requires lowercase values only."\n}}\n\n'
+
+def format_alphanumeric_underscore_only(resource, acronym):
+    return f'output "{resource}" {{\n  value = "{acronym}${{lower(replace(local.convention, "_", ""))}}"\n  description = "Naming convention for the resource {resource}.  This resource requires alphanumeric and underscore values only."\n}}\n\n'
+
 def build_resource_acronyms(resource_list=[]):
     """
     Automatically generate unique naming conventions for resources.
@@ -728,7 +783,16 @@ def build_terraform_output_file(acronym_dictionary={}):
     with open("outputs.tf", 'a') as terraform_outputs:
         terraform_outputs.truncate(0)
         for acronym, resource in acronym_dictionary.items():
-            terraform_outputs.write(f'output "{resource}" {{\n  value = "{acronym}${{local.convention}}"\n  description = "Naming convention for the resource {resource}."\n}}\n\n')
+            if resource in alphanumeric_lowercase_only:
+                terraform_outputs.write(format_alphanumeric_lowercase_only(resource=resource, acronym=acronym))
+            elif resource in alphanumeric_only or resource in length_restricted:
+                terraform_outputs.write(format_alphanumeric_only(resource=resource, acronym=acronym))
+            elif resource in lowercase_only:
+                terraform_outputs.write(format_lowercase_only(resource=resource, acronym=acronym))
+            elif resource in alphanumeric_underscore_only:
+                terraform_outputs.write(format_alphanumeric_underscore_only(resource=resource, acronym=acronym))
+            else:
+                terraform_outputs.write(format_standard(resource=resource, acronym=acronym))
 
     return terraform_outputs
 
