@@ -16,5 +16,4 @@ jobs:
         output-file: README.md
         output-method: inject
         git-push: "true"
-        sections:
-          show: ['providers', 'resources', 'inputs', 'outputs']
+        config-file: ../.terraform-docs.yml

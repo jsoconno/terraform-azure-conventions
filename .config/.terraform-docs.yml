@@ -1,0 +1,6 @@
+sections:
+  show:
+    - providers
+    - resources
+    - inputs
+    - outputs
