@@ -1,8 +1,7 @@
 name: Generate terraform docs
 on:
-  push:
-    branches:
-      feature-test-docs
+  - pull_request
+    
 
 jobs:
   docs:
