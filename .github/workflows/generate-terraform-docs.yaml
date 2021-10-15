@@ -17,8 +17,4 @@ jobs:
         output-method: inject
         git-push: "true"
         sections:
-          show:
-            - providers
-            - resources
-            - inputs
-            - outputs
+          show: ['providers', 'resources', 'inputs', 'outputs']
