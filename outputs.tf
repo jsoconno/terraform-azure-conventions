@@ -214,8 +214,8 @@ output "azurerm_advisor_recommendations" {
 }
 
 output "azurerm_analysis_services_server" {
-  value = "ass${local.convention}"
-  description = "Naming convention for the resource azurerm_analysis_services_server."
+  value = "ass${lower(replace(local.convention, "-", ""))}"
+  description = "Naming convention for the resource azurerm_analysis_services_server.  This resource requires alphanumeric and lowercase values only."
 }
 
 output "azurerm_app_configuration" {
@@ -254,8 +254,8 @@ output "azurerm_app_service_certificate_binding" {
 }
 
 output "azurerm_app_service_certificate_order" {
-  value = "asco${local.convention}"
-  description = "Naming convention for the resource azurerm_app_service_certificate_order."
+  value = "asco${replace(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_app_service_certificate_order.  This resource requires alphanumeric values only."
 }
 
 output "azurerm_app_service_custom_hostname_binding" {
@@ -494,8 +494,8 @@ output "azurerm_resource_provider_registration" {
 }
 
 output "azurerm_batch_account" {
-  value = "ba${local.convention}"
-  description = "Naming convention for the resource azurerm_batch_account."
+  value = "ba${lower(replace(local.convention, "-", ""))}"
+  description = "Naming convention for the resource azurerm_batch_account.  This resource requires alphanumeric and lowercase values only."
 }
 
 output "azurerm_batch_application" {
@@ -654,8 +654,8 @@ output "azurerm_disk_access" {
 }
 
 output "azurerm_disk_encryption_set" {
-  value = "des${local.convention}"
-  description = "Naming convention for the resource azurerm_disk_encryption_set."
+  value = "des${lower(replace(local.convention, "_", ""))}"
+  description = "Naming convention for the resource azurerm_disk_encryption_set.  This resource requires alphanumeric and underscore values only."
 }
 
 output "azurerm_image" {
@@ -744,13 +744,13 @@ output "azurerm_virtual_machine_scale_set_extension" {
 }
 
 output "azurerm_windows_virtual_machine" {
-  value = "wvm${local.convention}"
-  description = "Naming convention for the resource azurerm_windows_virtual_machine."
+  value = "wvm${replace(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_windows_virtual_machine.  This resource requires alphanumeric values only."
 }
 
 output "azurerm_windows_virtual_machine_scale_set" {
-  value = "wvmss${local.convention}"
-  description = "Naming convention for the resource azurerm_windows_virtual_machine_scale_set."
+  value = "wvmss${replace(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_windows_virtual_machine_scale_set.  This resource requires alphanumeric values only."
 }
 
 output "azurerm_consumption_budget_resource_group" {
@@ -764,13 +764,13 @@ output "azurerm_consumption_budget_subscription" {
 }
 
 output "azurerm_container_group" {
-  value = "cg${local.convention}"
-  description = "Naming convention for the resource azurerm_container_group."
+  value = "cg${lower(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_container_group.  This resource requires lowercase values only."
 }
 
 output "azurerm_container_registry" {
-  value = "cr${local.convention}"
-  description = "Naming convention for the resource azurerm_container_registry."
+  value = "cr${replace(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_container_registry.  This resource requires alphanumeric values only."
 }
 
 output "azurerm_container_registry_scope_map" {
@@ -784,8 +784,8 @@ output "azurerm_container_registry_token" {
 }
 
 output "azurerm_container_registry_webhook" {
-  value = "crw${local.convention}"
-  description = "Naming convention for the resource azurerm_container_registry_webhook."
+  value = "crw${replace(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_container_registry_webhook.  This resource requires alphanumeric values only."
 }
 
 output "azurerm_kubernetes_cluster" {
@@ -1109,8 +1109,8 @@ output "azurerm_data_factory_linked_service_cosmosdb" {
 }
 
 output "azurerm_data_factory_linked_service_data_lake_storage_gen2" {
-  value = "dflsdlsg${local.convention}"
-  description = "Naming convention for the resource azurerm_data_factory_linked_service_data_lake_storage_gen2."
+  value = "dflsdlsg${lower(replace(local.convention, "-", ""))}"
+  description = "Naming convention for the resource azurerm_data_factory_linked_service_data_lake_storage_gen2.  This resource requires alphanumeric and lowercase values only."
 }
 
 output "azurerm_data_factory_linked_service_key_vault" {
@@ -1194,8 +1194,8 @@ output "azurerm_data_factory_tumbling_window" {
 }
 
 output "azurerm_data_lake_analytics_account" {
-  value = "dlaa${local.convention}"
-  description = "Naming convention for the resource azurerm_data_lake_analytics_account."
+  value = "dlaa${lower(replace(local.convention, "-", ""))}"
+  description = "Naming convention for the resource azurerm_data_lake_analytics_account.  This resource requires alphanumeric and lowercase values only."
 }
 
 output "azurerm_data_lake_analytics_firewall_rule" {
@@ -1204,8 +1204,8 @@ output "azurerm_data_lake_analytics_firewall_rule" {
 }
 
 output "azurerm_data_lake_store" {
-  value = "dls${local.convention}"
-  description = "Naming convention for the resource azurerm_data_lake_store."
+  value = "dls${lower(replace(local.convention, "-", ""))}"
+  description = "Naming convention for the resource azurerm_data_lake_store.  This resource requires alphanumeric and lowercase values only."
 }
 
 output "azurerm_data_lake_store_file" {
@@ -1249,8 +1249,8 @@ output "azurerm_data_share_dataset_data_lake_gen2" {
 }
 
 output "azurerm_data_share_dataset_kusto_cluster" {
-  value = "dsdkc${local.convention}"
-  description = "Naming convention for the resource azurerm_data_share_dataset_kusto_cluster."
+  value = "dsdkc${lower(replace(local.convention, "-", ""))}"
+  description = "Naming convention for the resource azurerm_data_share_dataset_kusto_cluster.  This resource requires alphanumeric and lowercase values only."
 }
 
 output "azurerm_data_share_dataset_kusto_database" {
@@ -1499,8 +1499,8 @@ output "azurerm_sql_elasticpool" {
 }
 
 output "azurerm_sql_failover_group" {
-  value = "sfg${local.convention}"
-  description = "Naming convention for the resource azurerm_sql_failover_group."
+  value = "sfg${lower(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_sql_failover_group.  This resource requires lowercase values only."
 }
 
 output "azurerm_sql_firewall_rule" {
@@ -1514,13 +1514,13 @@ output "azurerm_sql_managed_database" {
 }
 
 output "azurerm_sql_managed_instance" {
-  value = "smi${local.convention}"
-  description = "Naming convention for the resource azurerm_sql_managed_instance."
+  value = "smi${lower(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_sql_managed_instance.  This resource requires lowercase values only."
 }
 
 output "azurerm_sql_server" {
-  value = "sse${local.convention}"
-  description = "Naming convention for the resource azurerm_sql_server."
+  value = "sse${lower(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_sql_server.  This resource requires lowercase values only."
 }
 
 output "azurerm_sql_virtual_network_rule" {
@@ -1894,8 +1894,8 @@ output "azurerm_logic_app_action_http" {
 }
 
 output "azurerm_logic_app_integration_account" {
-  value = "laia${local.convention}"
-  description = "Naming convention for the resource azurerm_logic_app_integration_account."
+  value = "laia${replace(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_logic_app_integration_account.  This resource requires alphanumeric values only."
 }
 
 output "azurerm_logic_app_integration_account_agreement" {
@@ -2069,8 +2069,8 @@ output "azurerm_media_live_output" {
 }
 
 output "azurerm_media_services_account" {
-  value = "msa${local.convention}"
-  description = "Naming convention for the resource azurerm_media_services_account."
+  value = "msa${lower(replace(local.convention, "-", ""))}"
+  description = "Naming convention for the resource azurerm_media_services_account.  This resource requires alphanumeric and lowercase values only."
 }
 
 output "azurerm_media_streaming_endpoint" {
@@ -2469,8 +2469,8 @@ output "azurerm_frontdoor_custom_https_configuration" {
 }
 
 output "azurerm_frontdoor_firewall_policy" {
-  value = "ffp${local.convention}"
-  description = "Naming convention for the resource azurerm_frontdoor_firewall_policy."
+  value = "ffp${replace(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_frontdoor_firewall_policy.  This resource requires alphanumeric values only."
 }
 
 output "azurerm_frontdoor_rules_engine" {
@@ -3064,8 +3064,8 @@ output "azurerm_sentinel_data_connector_threat_intelligence" {
 }
 
 output "azurerm_service_fabric_cluster" {
-  value = "sfc${local.convention}"
-  description = "Naming convention for the resource azurerm_service_fabric_cluster."
+  value = "sfc${lower(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_service_fabric_cluster.  This resource requires lowercase values only."
 }
 
 output "azurerm_service_fabric_mesh_application" {
@@ -3159,8 +3159,8 @@ output "azurerm_hpc_cache_nfs_target" {
 }
 
 output "azurerm_storage_account" {
-  value = "sa${local.convention}"
-  description = "Naming convention for the resource azurerm_storage_account."
+  value = "sa${lower(replace(local.convention, "-", ""))}"
+  description = "Naming convention for the resource azurerm_storage_account.  This resource requires alphanumeric and lowercase values only."
 }
 
 output "azurerm_storage_account_customer_managed_key" {
@@ -3184,8 +3184,8 @@ output "azurerm_storage_blob_inventory_policy" {
 }
 
 output "azurerm_storage_container" {
-  value = "sc${local.convention}"
-  description = "Naming convention for the resource azurerm_storage_container."
+  value = "sc${lower(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_storage_container.  This resource requires lowercase values only."
 }
 
 output "azurerm_storage_data_lake_gen2_filesystem" {
@@ -3214,13 +3214,13 @@ output "azurerm_storage_object_replication" {
 }
 
 output "azurerm_storage_queue" {
-  value = "squ${local.convention}"
-  description = "Naming convention for the resource azurerm_storage_queue."
+  value = "squ${lower(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_storage_queue.  This resource requires lowercase values only."
 }
 
 output "azurerm_storage_share" {
-  value = "ssh${local.convention}"
-  description = "Naming convention for the resource azurerm_storage_share."
+  value = "ssh${lower(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_storage_share.  This resource requires lowercase values only."
 }
 
 output "azurerm_storage_share_directory" {
@@ -3249,8 +3249,8 @@ output "azurerm_storage_sync_group" {
 }
 
 output "azurerm_storage_table" {
-  value = "sta${local.convention}"
-  description = "Naming convention for the resource azurerm_storage_table."
+  value = "sta${replace(local.convention, "-", "")}"
+  description = "Naming convention for the resource azurerm_storage_table.  This resource requires alphanumeric values only."
 }
 
 output "azurerm_storage_table_entity" {
