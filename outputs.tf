@@ -764,7 +764,7 @@ output "azurerm_consumption_budget_subscription" {
 }
 
 output "azurerm_container_group" {
-  value = "cg${lower(local.convention, "-", "")}"
+  value = "cg${lower(local.convention)}"
   description = "Naming convention for the resource azurerm_container_group.  This resource requires lowercase values only."
 }
 
@@ -1499,7 +1499,7 @@ output "azurerm_sql_elasticpool" {
 }
 
 output "azurerm_sql_failover_group" {
-  value = "sfg${lower(local.convention, "-", "")}"
+  value = "sfg${lower(local.convention)}"
   description = "Naming convention for the resource azurerm_sql_failover_group.  This resource requires lowercase values only."
 }
 
@@ -1514,12 +1514,12 @@ output "azurerm_sql_managed_database" {
 }
 
 output "azurerm_sql_managed_instance" {
-  value = "smi${lower(local.convention, "-", "")}"
+  value = "smi${lower(local.convention)}"
   description = "Naming convention for the resource azurerm_sql_managed_instance.  This resource requires lowercase values only."
 }
 
 output "azurerm_sql_server" {
-  value = "sse${lower(local.convention, "-", "")}"
+  value = "sse${lower(local.convention)}"
   description = "Naming convention for the resource azurerm_sql_server.  This resource requires lowercase values only."
 }
 
@@ -3064,7 +3064,7 @@ output "azurerm_sentinel_data_connector_threat_intelligence" {
 }
 
 output "azurerm_service_fabric_cluster" {
-  value = "sfc${lower(local.convention, "-", "")}"
+  value = "sfc${lower(local.convention)}"
   description = "Naming convention for the resource azurerm_service_fabric_cluster.  This resource requires lowercase values only."
 }
 
@@ -3184,7 +3184,7 @@ output "azurerm_storage_blob_inventory_policy" {
 }
 
 output "azurerm_storage_container" {
-  value = "sc${lower(local.convention, "-", "")}"
+  value = "sc${lower(local.convention)}"
   description = "Naming convention for the resource azurerm_storage_container.  This resource requires lowercase values only."
 }
 
@@ -3214,12 +3214,12 @@ output "azurerm_storage_object_replication" {
 }
 
 output "azurerm_storage_queue" {
-  value = "squ${lower(local.convention, "-", "")}"
+  value = "squ${lower(local.convention)}"
   description = "Naming convention for the resource azurerm_storage_queue.  This resource requires lowercase values only."
 }
 
 output "azurerm_storage_share" {
-  value = "ssh${lower(local.convention, "-", "")}"
+  value = "ssh${lower(local.convention)}"
   description = "Naming convention for the resource azurerm_storage_share.  This resource requires lowercase values only."
 }
 
