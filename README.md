@@ -78,6 +78,8 @@ To keep the naming as simple to understand as possible, the following logic was 
 
 `api management` conflicts with `automation module` for the acronym `am` so `api management` gets `am` and `automation module` gets `amo`.
 
+These conventions are generated automatically using the `build_outputs_tf.py` file in the `.config` file.  `outputs.tf` shoudl not be updated manually.
+
 <!--- BEGIN_TF_DOCS --->
 ## Requirements
 
