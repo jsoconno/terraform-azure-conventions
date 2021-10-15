@@ -1,4 +1,4 @@
-# Azurerm Provider Resource Naming Conventions Module
+# Azure Naming Conventions Module
 
 ## Overview
 
@@ -77,3 +77,6 @@ To keep the naming as simple to understand as possible, the following logic was 
 5. If multiple resources have the same acronym then the first resource alphabetically retains the baseline acronym and the subsequent resources alphabetically adds additional letters from the last name of ther service.
 
 `api management` conflicts with `automation module` for the acronym `am` so `api management` gets `am` and `automation module` gets `amo`.
+
+<!--- BEGIN_TF_DOCS --->
+<!--- END_TF_DOCS --->
