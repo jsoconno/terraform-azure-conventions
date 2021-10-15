@@ -81,19 +81,11 @@ To keep the naming as simple to understand as possible, the following logic was 
 These conventions are generated automatically using the `build_outputs_tf.py` file in the `.config` file.  `outputs.tf` shoudl not be updated manually.
 
 <!--- BEGIN_TF_DOCS --->
-## Requirements
-
-No requirements.
-
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_null"></a> [null](#provider\_null) | n/a |
-
-## Modules
-
-No modules.
 
 ## Resources
 
