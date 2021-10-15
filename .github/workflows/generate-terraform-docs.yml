@@ -1,6 +1,5 @@
 name: Generate terraform docs
-on:
-  - pull_request
+on: [pull_request]
 
 jobs:
   docs:
@@ -17,3 +16,4 @@ jobs:
         output-file: README.md
         output-method: inject
         git-push: "true"
+        config-file: .config/.terraform-docs.yml
