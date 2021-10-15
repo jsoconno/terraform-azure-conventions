@@ -1,3 +1,5 @@
+# This script automatically creates the outputs.tf file
+
 resource_list = [
     "azurerm_api_management",
     "azurerm_api_management_api",
