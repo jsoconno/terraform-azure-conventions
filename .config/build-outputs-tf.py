@@ -743,7 +743,7 @@ def format_alphanumeric_only(resource, acronym):
     return f'output "{resource}" {{\n  value = "{acronym}${{replace(local.convention, "-", "")}}"\n  description = "Naming convention for the resource {resource}.  This resource requires alphanumeric values only."\n}}\n\n'
 
 def format_lowercase_only(resource, acronym):
-    return f'output "{resource}" {{\n  value = "{acronym}${{lower(local.convention, "-", "")}}"\n  description = "Naming convention for the resource {resource}.  This resource requires lowercase values only."\n}}\n\n'
+    return f'output "{resource}" {{\n  value = "{acronym}${{lower(local.convention)}}"\n  description = "Naming convention for the resource {resource}.  This resource requires lowercase values only."\n}}\n\n'
 
 def format_alphanumeric_underscore_only(resource, acronym):
     return f'output "{resource}" {{\n  value = "{acronym}${{lower(replace(local.convention, "_", ""))}}"\n  description = "Naming convention for the resource {resource}.  This resource requires alphanumeric and underscore values only."\n}}\n\n'
