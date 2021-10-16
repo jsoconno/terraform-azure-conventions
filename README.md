@@ -89,10 +89,10 @@ These conventions are generated automatically using the `build-outputs-tf.py` fi
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_case"></a> [case](#input\_case) | Allows users to specify the desired case. | `string` | `"kabab"` | no |
-| <a name="input_environment_acronym"></a> [environment\_acronym](#input\_environment\_acronym) | The acronym for the deployment environment.  For example, 'd' for 'development'. | `string` | `"d"` | no |
+| <a name="input_case"></a> [case](#input\_case) | Allows the user to set the desired casing.  Case options include `kabab`, `camel`, and `lower`. | `string` | `"kabab"` | no |
+| <a name="input_environment_acronym"></a> [environment\_acronym](#input\_environment\_acronym) | The acronym for the deployment environment.  For example, `d` for development. | `string` | `"d"` | no |
 | <a name="input_location_acronym"></a> [location\_acronym](#input\_location\_acronym) | The acronym for the deployment location. | `string` | `"use"` | no |
-| <a name="input_workload_acronym"></a> [workload\_acronym](#input\_workload\_acronym) | The acronym for the workload.  This might be an application, project, focus area, or other item. | `string` | n/a | yes |
+| <a name="input_workload_acronym"></a> [workload\_acronym](#input\_workload\_acronym) | The acronym for the workload.  This might be an application, project, focus area, or other dimension.  For example, `core`, `app`, or some acronym for an app like `fb` might be common. | `string` | n/a | yes |
 
 ## Outputs
 
