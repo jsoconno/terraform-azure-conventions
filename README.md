@@ -1,22 +1,21 @@
 # Azure Naming Conventions Module
 
-## Overview
+## Summary
+This module is designed to help companies and teams standardize their Azure resource naming conventions.  The basic convention followed is `<unique resource identifier>-<location acronym>-<workload acronym>-<environment acronym>`.  Additional logic is implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed.
 
-The purpose of this module is to help standardize naming conventions for resources created in Azure using Terraform and the azurerm module.
+Casing options are available that allow some flexibility over the convention used, but the default `kabab` case is recommended for its broad support across services and for its readability.  Case options for `upper`, `snake` and `title` were considered, but there were too many resources that don't allow resources to start with an upper case letter or use the `_` character so these were left out.
 
-The basic convention followed is `<unique resource identifier>-<location acronym>-<workload acronym>-<environment acronym>`.  Resources that have constraints on special characters utilize the `replace()` function to remove the `-` from the convention.
+## Bugs
+Best efforts were made to try to address required naming conventions from Any bugs addressed based on [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules), but there could be items that are missing.  If you find a bug in a naming convention for a resource, please raise an issue specifying the specific resource and error provided by Terraform.
 
-Casing options were added to allow some flexibility over naming, but the default `kabab` case is recommended for its broad support across services and readability.  Case options for `upper`, `snake` and `title` were considered, but there are many resources that don't allow resources to start with an upper case letter or use the `_` character.  For these reasons, all casing supported are those that only use dashes or no spaces with the first letter always being lower case.
-
-Over time, this module will be improved to remove items that do not accept a name attribute.  Any bugs addressed based on Azure's [naming conventions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules) will be addressed as they are identified.
+All Azure resources have been included to ensure completeness, but not all resources allow for a name or would benefit from a convention.
 
 ## Example
-
 The best way to take advantage of this module is to create a file with the name `conventions.tf` to hold the naming standards module.  The following code should be added with your specific values.
 
 ```terraform
 module "conventions" {
-  source = "github.com/jsoconno/terraform-module-naming-standards?ref=v0.3.0"
+  source = "github.com/jsoconno/terraform-module-naming-standards?ref=v0.4.0"
 
   case = "kabab" # this is optional and set to kabab by default.  shown here for demonstration only.
 
@@ -46,8 +45,8 @@ resource "azurerm_app_service_plan" "core" {
 }
 ```
 The module is written so that the name of the provider resource will always match the name of the convention so it is simple to reference.  For example, to use the proper naming convention for a subnet when using the azurerm provider you would use `module.conventions.azurerm_subnet`.
-## Logic
 
+## Logic
 To keep the naming as simple to understand as possible, the following logic was implemented:
 
 1. Naming uses the provider name as a baseline
@@ -71,7 +70,7 @@ To keep the naming as simple to understand as possible, the following logic was 
 
 `api management` conflicts with `automation module` for the acronym `am` so `api management` gets `am` and `automation module` gets `amo`.
 
-These conventions are generated automatically using the `build_outputs_tf.py` file in the `.config` file.  `outputs.tf` shoudl not be updated manually.
+These conventions are generated automatically using the `build-outputs-tf.py` file in the `.config` folder.  `outputs.tf` should not be updated manually by any contributors to this module.
 
 <!--- BEGIN_TF_DOCS --->
 ## Providers
