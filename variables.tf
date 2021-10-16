@@ -1,7 +1,7 @@
 variable "case" {
   default     = "kabab"
   type        = string
-  description = "Allows users to specify the desired case."
+  description = "Allows the user to set the desired casing.  Case options include `kabab`, `camel`, and `lower`."
   validation {
     condition = (
       contains(["kabab", "camel", "lower"], var.case)
@@ -24,7 +24,7 @@ variable "location_acronym" {
 
 variable "workload_acronym" {
   type        = string
-  description = "The acronym for the workload.  This might be an application, project, focus area, or other item."
+  description = "The acronym for the workload.  This might be an application, project, focus area, or other dimension.  For example, `core`, `app`, or some acronym for an app like `fb` might be common."
   validation {
     condition = (
       length(var.workload_acronym) <= 8
@@ -36,7 +36,7 @@ variable "workload_acronym" {
 variable "environment_acronym" {
   default     = "d"
   type        = string
-  description = "The acronym for the deployment environment.  For example, 'd' for 'development'."
+  description = "The acronym for the deployment environment.  For example, `d` for development."
   validation {
     condition = (
       contains(["x", "d", "t", "q", "u", "s", "p"], var.environment_acronym)

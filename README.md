@@ -6,13 +6,6 @@ The purpose of this module is to help standardize naming conventions for resourc
 
 The basic convention followed is `<unique resource identifier>-<location acronym>-<workload acronym>-<environment acronym>`.  Resources that have constraints on special characters utilize the `replace()` function to remove the `-` from the convention.
 
-The configuration takes in the following arguments:
-
-* `var: location_acronym [string - optional validated - defaults to "use"]` - The acronym for the deployment location.
-* `var: workload_acronym [string - required restricted - 8 chararcter limit]` - The acronym for the workload.  This might be an application, project, focus area, or other dimension.  For example, `core`, `app`, or some acronym for an app like `fb` might be common.
-* `environment_acronym [string - optional validated - defaults to "d"]` - The acronym for the deployment environment.  For example, `d` for development.
-* `var: case [bool - optional validated - defaults to "kabab"]` - Allows the user to set some casing parameters.  Case options include `kabab`, `camel`, and `lower`.
-
 Casing options were added to allow some flexibility over naming, but the default `kabab` case is recommended for its broad support across services and readability.  Case options for `upper`, `snake` and `title` were considered, but there are many resources that don't allow resources to start with an upper case letter or use the `_` character.  For these reasons, all casing supported are those that only use dashes or no spaces with the first letter always being lower case.
 
 Over time, this module will be improved to remove items that do not accept a name attribute.  Any bugs addressed based on Azure's [naming conventions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules) will be addressed as they are identified.
@@ -97,10 +90,10 @@ These conventions are generated automatically using the `build_outputs_tf.py` fi
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_case"></a> [case](#input\_case) | Allows users to specify the desired case. | `string` | `"kabab"` | no |
-| <a name="input_environment_acronym"></a> [environment\_acronym](#input\_environment\_acronym) | The acronym for the deployment environment.  For example, 'd' for 'development'. | `string` | `"d"` | no |
+| <a name="input_case"></a> [case](#input\_case) | Allows the user to set the desired casing.  Case options include `kabab`, `camel`, and `lower`. | `string` | `"kabab"` | no |
+| <a name="input_environment_acronym"></a> [environment\_acronym](#input\_environment\_acronym) | The acronym for the deployment environment.  For example, `d` for development. | `string` | `"d"` | no |
 | <a name="input_location_acronym"></a> [location\_acronym](#input\_location\_acronym) | The acronym for the deployment location. | `string` | `"use"` | no |
-| <a name="input_workload_acronym"></a> [workload\_acronym](#input\_workload\_acronym) | The acronym for the workload.  This might be an application, project, focus area, or other item. | `string` | n/a | yes |
+| <a name="input_workload_acronym"></a> [workload\_acronym](#input\_workload\_acronym) | The acronym for the workload.  This might be an application, project, focus area, or other dimension.  For example, `core`, `app`, or some acronym for an app like `fb` might be common. | `string` | n/a | yes |
 
 ## Outputs
 
