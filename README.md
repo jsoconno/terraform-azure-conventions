@@ -3,12 +3,12 @@
 ## Summary
 This module is designed to help companies and teams standardize their Azure resource naming conventions.  The basic convention followed is `<unique resource identifier>-<location acronym>-<workload acronym>-<environment acronym>`.  Additional logic is implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed.
 
-Casing options are available that allow some flexibility over the convention used, but the default `kabab` case is recommended for its broad support across services and for its readability.  Case options for `upper`, `snake` and `title` were considered, but there were too many resources that don't allow resources to start with an upper case letter or use the `_` character so these were left out.
+Casing options are available that allow some flexibility over the convention used, but the default `kabab` case is highly recommended for its broad support across services and for its readability.  Case options for `upper`, `snake` and `title` were considered, but there were too many resources that don't allow the name to start with an upper case letter or use the `_` character so these were left out.
 
 ## Bugs
-Best efforts were made to try to address required naming conventions from Any bugs addressed based on [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules), but there could be items that are missing.  If you find a bug in a naming convention for a resource, please raise an issue specifying the specific resource and error provided by Terraform.
+Best efforts were made to try to address required naming conventions based on [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules), but there could be items that are missing.  If you find a bug in a naming convention for a resource, please raise an issue specifying the specific resource and error provided by Terraform.
 
-All Azure resources have been included to ensure completeness, but not all resources allow for a name or would benefit from a convention.
+All Azure resources implemented with Terraform have been included to ensure completeness.  However, not all resources allow for a name or would benefit from a convention.
 
 ## Example
 The best way to take advantage of this module is to create a file with the name `conventions.tf` to hold the naming standards module.  The following code should be added with your specific values.
@@ -26,7 +26,7 @@ module "conventions" {
 ```
 You can also pass variables to the module from a variables file so that you can make the values different based on your environment.  For example, you might want to parameterize the `environment_acronym` argument so that you can deploy to development with the value `d`, but production with the value `p`.
 
-Another common case might be to have multiple conventions if you need to specific a different workload.  To do this, it is recommended to call the module twice and give it a name that specifies the workload.  For example, you might have `module.conventions_core.azurerm...` and `module.conventions_app.azurerm...`.
+Another common case might be to have multiple conventions if you need to specify a different workload.  To do this, it is recommended to call the module twice and give it a name that specifies the workload.  For example, you might have `module.conventions_core.azurerm...` and `module.conventions_app.azurerm...`.
 
 Once the module is declared you can use it with any supported resource by calling the module and referencing the provider resource type.
 
