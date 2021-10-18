@@ -13,17 +13,17 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.head.ref }}
 
-    - uses: actions/checkout@v2
-    - name: Install Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
+    # - uses: actions/checkout@v2
+    # - name: Install Python
+    #   uses: actions/setup-python@v2
+    #   with:
+    #     python-version: '3.x'
 
-    - name: Update Terraform output file
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r .scripts/requirements.txt
-        python .scripts/create-outputs-tf.py
+    # - name: Update Terraform output file
+    #   run: |
+    #     python -m pip install --upgrade pip
+    #     pip install -r .scripts/requirements.txt
+    #     python .scripts/create-outputs-tf.py
 
     - name: Create docs and push changes to pull request
       uses: terraform-docs/gh-actions@main
