@@ -1,3 +1,8 @@
+output "azurerm_this_is_justins_resource" {
+  value = "tijr${local.convention}"
+  description = "Naming convention for the resource azurerm_this_is_justins_resource."
+}
+
 output "azurerm_api_management" {
   value = "am${local.convention}"
   description = "Naming convention for the resource azurerm_api_management."
