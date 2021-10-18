@@ -1,10 +1,12 @@
 # Azure Naming Conventions Module
 
 ## Summary
-This module is designed to help companies and teams standardize their Azure resource naming conventions.  The basic convention followed is `<unique resource identifier>-<location acronym>-<environment acronym>-<workload acronym>`.  Logic has implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed.
+An effective naming convention composes resource names from important information about each resource. A well-chosen name helps you quickly identify the resource's type, its associated workload, its deployment environment, and the Azure region hosting it. 
+
+This module is designed to help companies and teams standardize their Azure resource naming conventions.  The basic convention followed is `<resource type>-<region>-<environment>-<workload>`.  Logic has implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed as documented [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules).
 
 ## Bugs
-Best efforts were made to try to address required naming conventions based on [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules), but there could be items that are missing.  If you find a bug in a naming convention for a resource, please [raise a bug](https://github.com/jsoconno/terraform-azure-conventions/issues/new?assignees=&labels=&template=bug.md&title=).
+If you find a bug in a naming convention for a resource, please [raise a bug](https://github.com/jsoconno/terraform-azure-conventions/issues/new?assignees=&labels=&template=bug.md&title=).
 
 ## Using the module
 To use this module, copy and paste the following into your Terraform configuration, insert the variables, and run terraform init :
