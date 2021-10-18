@@ -11,9 +11,6 @@ This convention is based on documentation from Microsoft on best practices found
 
 Logic has implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed as documented by Microsoft [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules).
 
-## Bugs
-If you find a bug in a naming convention for a resource, please [raise a bug](https://github.com/jsoconno/terraform-azure-conventions/issues/new?assignees=&labels=&template=bug.md&title=).
-
 ## Example usage
 To use this module, copy and paste the example code provided in the [Terraform registry](https://registry.terraform.io/modules/Jsoconno/conventions/azure/latest).
 
@@ -61,6 +58,9 @@ To keep the naming as simple to understand as possible, the following logic was 
 `api management` conflicts with `automation module` for the acronym `am` so `api management` gets `am` and `automation module` gets `amo`.
 
 These conventions are generated automatically using the `build-outputs-tf.py` file in the `.config` folder.  `outputs.tf` should not be updated manually by any contributors to this module.
+
+## Reporting bugs
+If you find a bug in a naming convention for a resource, please [raise a bug](https://github.com/jsoconno/terraform-azure-conventions/issues/new?assignees=&labels=&template=bug.md&title=).
 
 <!--- BEGIN_TF_DOCS --->
 ## Providers
