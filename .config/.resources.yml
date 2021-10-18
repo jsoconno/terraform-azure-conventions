@@ -1,4 +1,5 @@
 resources:
+  - azurerm_this_is_justins_resource
   - azurerm_api_management
   - azurerm_api_management_api
   - azurerm_api_management_api_diagnostic
