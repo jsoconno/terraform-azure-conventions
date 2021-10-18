@@ -10,15 +10,14 @@ Best efforts were made to try to address required naming conventions based on [M
 
 All Azure resources implemented with Terraform have been included to ensure completeness.  However, not all resources allow for a name or would benefit from a convention.
 
-## Example
-The best way to take advantage of this module is to create a file with the name `conventions.tf` to hold the naming standards module.  The following code should be added with your specific values.
+## Using the module
+Copy and paste into your Terraform configuration, insert the variables, and run terraform init :
 
 ```terraform
 module "conventions" {
-  source = "github.com/jsoconno/terraform-module-naming-standards?ref=v0.4.0"
-
-  case = "kabab" # this is optional and set to kabab by default.  shown here for demonstration only.
-
+  source  = "Jsoconno/conventions/azure"
+  version = "0.4.1"
+  
   location_acronym = "use"
   workload_acronym = "core"
   environment_acronym = "d"

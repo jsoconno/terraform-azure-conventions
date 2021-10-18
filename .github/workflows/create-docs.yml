@@ -4,6 +4,7 @@ on:
     paths:
       - .config/**
       - .scripts/**
+      - outputs.tf
 
 jobs:
   docs:
