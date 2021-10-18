@@ -80,16 +80,16 @@ These conventions are generated automatically using the `build-outputs-tf.py` fi
 
 | Name | Type |
 |------|------|
-| [null_resource.naming_standards](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.conventions](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_case"></a> [case](#input\_case) | Allows the user to set the desired casing.  Case options include `kabab`, `camel`, and `lower`. | `string` | `"kabab"` | no |
-| <a name="input_environment_acronym"></a> [environment\_acronym](#input\_environment\_acronym) | The acronym for the deployment environment.  For example, `d` for development. | `string` | `"d"` | no |
-| <a name="input_location_acronym"></a> [location\_acronym](#input\_location\_acronym) | The acronym for the deployment location. | `string` | `"use"` | no |
-| <a name="input_workload_acronym"></a> [workload\_acronym](#input\_workload\_acronym) | The acronym for the workload.  This might be an application, project, focus area, or other dimension.  For example, `core`, `app`, or some acronym for an app like `fb` might be common. | `string` | n/a | yes |
+| <a name="input_business_unit"></a> [business\_unit](#input\_business\_unit) | Top-level division of your company that owns the subscription or workload the resource belongs to. In smaller organizations, this component might represent a single corporate top-level organizational element. Examples: `fin`, `mktg`, `product`, `it`, `corp`. | `string` | `null` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | The stage of the development lifecycle for the workload that the resource supports.  For example, `d` for development. | `string` | `"d"` | no |
+| <a name="input_region"></a> [region](#input\_region) | The Azure region where the resource is deployed.  For example, eus (East US). | `string` | `"use"` | no |
+| <a name="input_workload"></a> [workload](#input\_workload) | Name of the application, workload, or service that the resource is a part of. Examples: `navigator`, `emissions`, `sharepoint`, or `hadoop`. | `string` | n/a | yes |
 
 ## Outputs
 
