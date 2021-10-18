@@ -3,7 +3,13 @@
 ## Summary
 An effective naming convention composes resource names from important information about each resource. A well-chosen name helps you quickly identify the resource's type, its associated workload, its deployment environment, and the Azure region hosting it.
 
-This module is designed to help companies and teams standardize their Azure resource naming conventions.  The basic convention followed is `<resource type>-<region>-<environment>-<workload>`.  Logic has implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed as documented by Microsoft [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules).
+This module is designed to help companies and teams standardize their Azure resource naming conventions.  The basic convention followed is:
+
+`resource_type-region-environment-business_unit(optional)-workload`
+
+This convention is based on documentation from Microsoft on best practices found [here](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming).
+
+Logic has implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed as documented by Microsoft [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules).
 
 ## Bugs
 If you find a bug in a naming convention for a resource, please [raise a bug](https://github.com/jsoconno/terraform-azure-conventions/issues/new?assignees=&labels=&template=bug.md&title=).
