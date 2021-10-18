@@ -1,10 +1,5 @@
 name: Generate terraform docs
-on:
-  pull_request:
-    paths:
-      - .config/**
-      - .scripts/**
-      - outputs.tf
+on: [pull_request]
 
 jobs:
   docs:
