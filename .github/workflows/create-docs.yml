@@ -13,7 +13,19 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.head.ref }}
 
-    - name: Render terraform docs and push changes back to PR
+    - uses: actions/checkout@v2
+    - name: Install Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Update terraform output.tf file
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r .scripts/requirements.txt
+        python .scripts/create-outputs.tf.py
+
+    - name: Render terraform docs and push changes back to pr
       uses: terraform-docs/gh-actions@main
       with:
         working-dir: .
