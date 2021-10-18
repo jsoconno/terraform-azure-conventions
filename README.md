@@ -1,24 +1,21 @@
 # Azure Naming Conventions Module
 
 ## Summary
-This module is designed to help companies and teams standardize their Azure resource naming conventions.  The basic convention followed is `<unique resource identifier>-<location acronym>-<workload acronym>-<environment acronym>`.  Additional logic is implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed.
+An effective naming convention composes resource names from important information about each resource. A well-chosen name helps you quickly identify the resource's type, its associated workload, its deployment environment, and the Azure region hosting it. 
 
-Casing options are available that allow some flexibility over the convention used, but the default `kabab` case is highly recommended for its broad support across services and for its readability.  Case options for `upper`, `snake` and `title` were considered, but there were too many resources that don't allow the name to start with an upper case letter or use the `_` character so these were left out.
+This module is designed to help companies and teams standardize their Azure resource naming conventions.  The basic convention followed is `<resource type>-<region>-<environment>-<workload>`.  Logic has implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed as documented [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules).
 
 ## Bugs
-Best efforts were made to try to address required naming conventions based on [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules), but there could be items that are missing.  If you find a bug in a naming convention for a resource, please raise an issue specifying the specific resource and error provided by Terraform.
+If you find a bug in a naming convention for a resource, please [raise a bug](https://github.com/jsoconno/terraform-azure-conventions/issues/new?assignees=&labels=&template=bug.md&title=).
 
-All Azure resources implemented with Terraform have been included to ensure completeness.  However, not all resources allow for a name or would benefit from a convention.
-
-## Example
-The best way to take advantage of this module is to create a file with the name `conventions.tf` to hold the naming standards module.  The following code should be added with your specific values.
+## Using the module
+To use this module, copy and paste the following into your Terraform configuration, insert the variables, and run terraform init :
 
 ```terraform
 module "conventions" {
-  source = "github.com/jsoconno/terraform-module-naming-standards?ref=v0.4.0"
-
-  case = "kabab" # this is optional and set to kabab by default.  shown here for demonstration only.
-
+  source  = "Jsoconno/conventions/azure"
+  version = "0.4.1"
+  
   location_acronym = "use"
   workload_acronym = "core"
   environment_acronym = "d"
@@ -83,16 +80,16 @@ These conventions are generated automatically using the `build-outputs-tf.py` fi
 
 | Name | Type |
 |------|------|
-| [null_resource.naming_standards](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.conventions](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_case"></a> [case](#input\_case) | Allows the user to set the desired casing.  Case options include `kabab`, `camel`, and `lower`. | `string` | `"kabab"` | no |
-| <a name="input_environment_acronym"></a> [environment\_acronym](#input\_environment\_acronym) | The acronym for the deployment environment.  For example, `d` for development. | `string` | `"d"` | no |
-| <a name="input_location_acronym"></a> [location\_acronym](#input\_location\_acronym) | The acronym for the deployment location. | `string` | `"use"` | no |
-| <a name="input_workload_acronym"></a> [workload\_acronym](#input\_workload\_acronym) | The acronym for the workload.  This might be an application, project, focus area, or other dimension.  For example, `core`, `app`, or some acronym for an app like `fb` might be common. | `string` | n/a | yes |
+| <a name="input_business_unit"></a> [business\_unit](#input\_business\_unit) | Top-level division of your company that owns the subscription or workload the resource belongs to. In smaller organizations, this component might represent a single corporate top-level organizational element. Examples: `fin`, `mktg`, `product`, `it`, `corp`. | `string` | `null` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | The stage of the development lifecycle for the workload that the resource supports.  For example, `d` for development. | `string` | `"d"` | no |
+| <a name="input_region"></a> [region](#input\_region) | The Azure region where the resource is deployed.  For example, eus (East US). | `string` | `"use"` | no |
+| <a name="input_workload"></a> [workload](#input\_workload) | Name of the application, workload, or service that the resource is a part of. Examples: `navigator`, `emissions`, `sharepoint`, or `hadoop`. | `string` | n/a | yes |
 
 ## Outputs
 

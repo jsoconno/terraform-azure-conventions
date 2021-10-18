@@ -1,19 +1,7 @@
-variable "case" {
-  default     = "kabab"
-  type        = string
-  description = "Allows the user to set the desired casing.  Case options include `kabab`, `camel`, and `lower`."
-  validation {
-    condition = (
-      contains(["kabab", "camel", "lower"], var.case)
-    )
-    error_message = "Valid values for var: case are kabab (this-resource), snake (this_resource), camel (thisResource), lower (thisresource)."
-  }
-}
-
-variable "location_acronym" {
+variable "region" {
   default     = "use"
   type        = string
-  description = "The acronym for the deployment location."
+  description = "The Azure region where the resource is deployed.  For example, eus (East US)."
   validation {
     condition = (
       contains(["a", "ap", "as", "asc", "asc2", "ase", "ass", "b", "bs", "bse", "c", "cc", "ce", "ci", "cus", "cuse", "ea", "eus", "eus2", "eus2e", "e", "f", "fc", "fs", "ger", "gn", "gwc", "glob", "i", "j", "je", "jw", "jic", "jiw", "k", "kc", "ks", "ncus", "ne", "n", "nwe", "nw", "sa", "san", "saw", "scus", "si", "sea", "sc", "s", "sn", "sw", "uc", "un", "uks", "ukw", "uae", "uk", "us", "wcus", "we", "wi", "wus", "wus2", "wus3"], var.location_acronym)
@@ -22,9 +10,9 @@ variable "location_acronym" {
   }
 }
 
-variable "workload_acronym" {
+variable "workload" {
   type        = string
-  description = "The acronym for the workload.  This might be an application, project, focus area, or other dimension.  For example, `core`, `app`, or some acronym for an app like `fb` might be common."
+  description = "Name of the application, workload, or service that the resource is a part of. Examples: `navigator`, `emissions`, `sharepoint`, or `hadoop`."
   validation {
     condition = (
       length(var.workload_acronym) <= 8
@@ -33,14 +21,20 @@ variable "workload_acronym" {
   }
 }
 
-variable "environment_acronym" {
+variable "environment" {
   default     = "d"
   type        = string
-  description = "The acronym for the deployment environment.  For example, `d` for development."
+  description = "The stage of the development lifecycle for the workload that the resource supports.  For example, `d` for development."
   validation {
     condition = (
       contains(["x", "d", "t", "q", "u", "s", "p"], var.environment_acronym)
     )
     error_message = "Valid values for var: environment_acronym are x (Sandbox), d (Development), t (Test), q (QA), u (UAT), s (Staging), p (Production)."
   }
+}
+
+variable "business_unit" {
+  default     = null
+  type        = string
+  description = "Top-level division of your company that owns the subscription or workload the resource belongs to. In smaller organizations, this component might represent a single corporate top-level organizational element. Examples: `fin`, `mktg`, `product`, `it`, `corp`."
 }
