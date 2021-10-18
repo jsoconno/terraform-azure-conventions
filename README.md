@@ -1,17 +1,13 @@
 # Azure Naming Conventions Module
 
 ## Summary
-This module is designed to help companies and teams standardize their Azure resource naming conventions.  The basic convention followed is `<unique resource identifier>-<location acronym>-<workload acronym>-<environment acronym>`.  Additional logic is implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed.
-
-Casing options are available that allow some flexibility over the convention used, but the default `kabab` case is highly recommended for its broad support across services and for its readability.  Case options for `upper`, `snake` and `title` were considered, but there were too many resources that don't allow the name to start with an upper case letter or use the `_` character so these were left out.
+This module is designed to help companies and teams standardize their Azure resource naming conventions.  The basic convention followed is `<unique resource identifier>-<location acronym>-<environment acronym>-<workload acronym>`.  Logic has implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed.
 
 ## Bugs
-Best efforts were made to try to address required naming conventions based on [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules), but there could be items that are missing.  If you find a bug in a naming convention for a resource, please raise an issue specifying the specific resource and error provided by Terraform.
-
-All Azure resources implemented with Terraform have been included to ensure completeness.  However, not all resources allow for a name or would benefit from a convention.
+Best efforts were made to try to address required naming conventions based on [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules), but there could be items that are missing.  If you find a bug in a naming convention for a resource, please [raise a bug](https://github.com/jsoconno/terraform-azure-conventions/issues/new?assignees=&labels=&template=bug.md&title=).
 
 ## Using the module
-Copy and paste into your Terraform configuration, insert the variables, and run terraform init :
+To use this module, copy and paste the following into your Terraform configuration, insert the variables, and run terraform init :
 
 ```terraform
 module "conventions" {
