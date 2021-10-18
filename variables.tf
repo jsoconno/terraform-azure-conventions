@@ -34,7 +34,7 @@ variable "environment" {
 }
 
 variable "business_unit" {
-  default     = null
+  default     = ""
   type        = string
   description = "Top-level division of your company that owns the subscription or workload the resource belongs to. In smaller organizations, this component might represent a single corporate top-level organizational element. Examples: `fin`, `mktg`, `product`, `it`, `corp`."
 }

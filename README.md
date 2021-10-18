@@ -14,9 +14,17 @@ Logic has implemented to ensure Azure naming requirements such as alphanumeric o
 ## Example usage
 To use this module, copy and paste the example code provided in the [Terraform registry](https://registry.terraform.io/modules/Jsoconno/conventions/azure/latest).
 
+```terraform
+module "conventions" {
+  source  = "Jsoconno/conventions/azure"
+  version = "0.x.x"
+  # insert the 1 required variables here
+}
+```
+
 Once the module is declared you can use it with any supported resource by calling the module and dot sourcing into the resource type you are targeting.  The module is written so that the name of the provider resource will always match the name of the convention so it is simple to reference.
 
-For example, to use the proper naming convention for an Azure App Service Planyou would use `module.conventions.azurerm_app_service_plan`.
+For example, to use the proper naming convention for an Azure App Service Plan you would use `module.conventions.azurerm_app_service_plan`.
 
 ```terraform
 resource "azurerm_app_service_plan" "core" {
@@ -79,7 +87,7 @@ If you find a bug in a naming convention for a resource, please [raise a bug](ht
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_business_unit"></a> [business\_unit](#input\_business\_unit) | Top-level division of your company that owns the subscription or workload the resource belongs to. In smaller organizations, this component might represent a single corporate top-level organizational element. Examples: `fin`, `mktg`, `product`, `it`, `corp`. | `string` | `null` | no |
+| <a name="input_business_unit"></a> [business\_unit](#input\_business\_unit) | Top-level division of your company that owns the subscription or workload the resource belongs to. In smaller organizations, this component might represent a single corporate top-level organizational element. Examples: `fin`, `mktg`, `product`, `it`, `corp`. | `string` | `""` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | The stage of the development lifecycle for the workload that the resource supports.  For example, `d` for development. | `string` | `"d"` | no |
 | <a name="input_region"></a> [region](#input\_region) | The Azure region where the resource is deployed.  For example, eus (East US). | `string` | `"use"` | no |
 | <a name="input_workload"></a> [workload](#input\_workload) | Name of the application, workload, or service that the resource is a part of. Examples: `navigator`, `emissions`, `sharepoint`, or `hadoop`. | `string` | n/a | yes |
