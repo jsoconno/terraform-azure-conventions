@@ -87,7 +87,7 @@ If you find a bug in a naming convention for a resource, please [raise a bug](ht
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_business_unit"></a> [business\_unit](#input\_business\_unit) | Top-level division of your company that owns the subscription or workload the resource belongs to. In smaller organizations, this component might represent a single corporate top-level organizational element. Examples: `fin`, `mktg`, `product`, `it`, `corp`. | `string` | `null` | no |
+| <a name="input_business_unit"></a> [business\_unit](#input\_business\_unit) | Top-level division of your company that owns the subscription or workload the resource belongs to. In smaller organizations, this component might represent a single corporate top-level organizational element. Examples: `fin`, `mktg`, `product`, `it`, `corp`. | `string` | `""` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | The stage of the development lifecycle for the workload that the resource supports.  For example, `d` for development. | `string` | `"d"` | no |
 | <a name="input_region"></a> [region](#input\_region) | The Azure region where the resource is deployed.  For example, eus (East US). | `string` | `"use"` | no |
 | <a name="input_workload"></a> [workload](#input\_workload) | Name of the application, workload, or service that the resource is a part of. Examples: `navigator`, `emissions`, `sharepoint`, or `hadoop`. | `string` | n/a | yes |
