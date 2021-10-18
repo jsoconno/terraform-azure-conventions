@@ -1,31 +1,22 @@
 # Azure Naming Conventions Module
 
 ## Summary
-An effective naming convention composes resource names from important information about each resource. A well-chosen name helps you quickly identify the resource's type, its associated workload, its deployment environment, and the Azure region hosting it. 
+An effective naming convention composes resource names from important information about each resource. A well-chosen name helps you quickly identify the resource's type, its associated workload, its deployment environment, and the Azure region hosting it.
 
-This module is designed to help companies and teams standardize their Azure resource naming conventions.  The basic convention followed is `<resource type>-<region>-<environment>-<workload>`.  Logic has implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed as documented [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules).
+This module is designed to help companies and teams standardize their Azure resource naming conventions.  The basic convention followed is:
 
-## Bugs
-If you find a bug in a naming convention for a resource, please [raise a bug](https://github.com/jsoconno/terraform-azure-conventions/issues/new?assignees=&labels=&template=bug.md&title=).
+`resource_type-region-environment-business_unit(optional)-workload`
 
-## Using the module
-To use this module, copy and paste the following into your Terraform configuration, insert the variables, and run terraform init :
+This convention is based on documentation from Microsoft on best practices found [here](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming).
 
-```terraform
-module "conventions" {
-  source  = "Jsoconno/conventions/azure"
-  version = "0.4.1"
-  
-  location_acronym = "use"
-  workload_acronym = "core"
-  environment_acronym = "d"
-}
-```
-You can also pass variables to the module from a variables file so that you can make the values different based on your environment.  For example, you might want to parameterize the `environment_acronym` argument so that you can deploy to development with the value `d`, but production with the value `p`.
+Logic has implemented to ensure Azure naming requirements such as alphanumeric or lowercase only and special character restrictions are followed as documented by Microsoft [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules).
 
-Another common case might be to have multiple conventions if you need to specify a different workload.  To do this, it is recommended to call the module twice and give it a name that specifies the workload.  For example, you might have `module.conventions_core.azurerm...` and `module.conventions_app.azurerm...`.
+## Example usage
+To use this module, copy and paste the example code provided in the [Terraform registry](https://registry.terraform.io/modules/Jsoconno/conventions/azure/latest).
 
-Once the module is declared you can use it with any supported resource by calling the module and referencing the provider resource type.
+Once the module is declared you can use it with any supported resource by calling the module and dot sourcing into the resource type you are targeting.  The module is written so that the name of the provider resource will always match the name of the convention so it is simple to reference.
+
+For example, to use the proper naming convention for an Azure App Service Planyou would use `module.conventions.azurerm_app_service_plan`.
 
 ```terraform
 resource "azurerm_app_service_plan" "core" {
@@ -41,7 +32,6 @@ resource "azurerm_app_service_plan" "core" {
   tags = var.tags
 }
 ```
-The module is written so that the name of the provider resource will always match the name of the convention so it is simple to reference.  For example, to use the proper naming convention for a subnet when using the azurerm provider you would use `module.conventions.azurerm_subnet`.
 
 ## Logic
 To keep the naming as simple to understand as possible, the following logic was implemented:
@@ -68,6 +58,9 @@ To keep the naming as simple to understand as possible, the following logic was 
 `api management` conflicts with `automation module` for the acronym `am` so `api management` gets `am` and `automation module` gets `amo`.
 
 These conventions are generated automatically using the `build-outputs-tf.py` file in the `.config` folder.  `outputs.tf` should not be updated manually by any contributors to this module.
+
+## Reporting bugs
+If you find a bug in a naming convention for a resource, please [raise a bug](https://github.com/jsoconno/terraform-azure-conventions/issues/new?assignees=&labels=&template=bug.md&title=).
 
 <!--- BEGIN_TF_DOCS --->
 ## Providers
